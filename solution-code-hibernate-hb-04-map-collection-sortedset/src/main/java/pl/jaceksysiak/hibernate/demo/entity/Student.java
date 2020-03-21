@@ -1,6 +1,6 @@
 package pl.jaceksysiak.hibernate.demo.entity;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -31,10 +30,11 @@ public class Student {
 	private String email;
 		
 	@ElementCollection
-	@CollectionTable(name="image", //defaults to student_images
-					joinColumns = @JoinColumn(name="student_id"))
+	@CollectionTable(name="image")
+	//@OrderBy()  // z klasy Java persistence
+    @org.hibernate.annotations.OrderBy(clause = "file_name") //default asc
 	@Column(name="file_name") //defaults to images
-	private Set<String> images = new HashSet<String>();
+	private Set<String> images = new LinkedHashSet<String>();
 	
 	
 	public Student(String firstName, String lastName, String email) {

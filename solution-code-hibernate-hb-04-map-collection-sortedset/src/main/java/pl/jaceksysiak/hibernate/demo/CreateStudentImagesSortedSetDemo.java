@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import pl.jaceksysiak.hibernate.demo.entity.Student;
 
-public class CreateStudentImagesSetDemo {
+public class CreateStudentImagesSortedSetDemo {
 
 
 	public static void main(String[] args) {
